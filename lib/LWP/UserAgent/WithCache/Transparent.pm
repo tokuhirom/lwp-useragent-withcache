@@ -4,13 +4,10 @@ use warnings;
 our $VERSION = '0.01';
 use LWP::UserAgent::WithCache;
 
-my %opt;
 sub import {
     my $class = shift;
-    %opt = @_;
-}
+    my %opt = @_;
 
-{
     no warnings 'redefine';
     my $orignew = *LWP::UserAgent::new{CODE};
     *LWP::UserAgent::new = sub {
